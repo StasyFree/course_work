@@ -34,3 +34,10 @@ def test_change_date(element_creation):
     assert operation.date.day == 26
     assert operation.date.microsecond == 294041
 
+
+def test_change_format_date(element_creation):
+    state, date, amount, currency, description, destination, recipient = element_creation
+    operation = Operation(state, date, amount, currency, description, recipient, destination)
+    operation.change_date()
+    operation.change_format_date()
+    assert operation.date == '26.08.2019'
